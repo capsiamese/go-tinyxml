@@ -2,13 +2,15 @@ package main
 
 import (
 	"fmt"
-	"github.com/capsiamese/go-tinyxml/bind"
 )
 
 func main() {
-	doc := bind.NewXMLDocument()
+	doc := NewXMLDocument()
 	doc.Todo()
 	if err := doc.LoadFile("Hello").Error(); err != nil {
+		fmt.Println(err)
+	}
+	if err := doc.Parse([]byte{1, 2, 3}).Error(); err != nil {
 		fmt.Println(err)
 	}
 }
